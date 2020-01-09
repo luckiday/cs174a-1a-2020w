@@ -1,6 +1,6 @@
-# UCLA CS174A-1B, 2019 Fall
+# UCLA CS174A-1A, Winter 2020
 
-@ Course materials of CS174A, discussion 1A, 2020 Winter.
+@ Course materials of CS174A, discussion 1A, Winter 2020.
 
 @ Instructor: [Demetri Terzopoulos](http://web.cs.ucla.edu/~dt/)
 
