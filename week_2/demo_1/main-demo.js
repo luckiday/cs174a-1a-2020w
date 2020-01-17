@@ -14,9 +14,17 @@ window.Triangle = window.classes.Triangle =
         // having their own 3D position, normal vector, and texture-space coordinate.
         constructor() {
             super("positions", "normals");
-            this.positions = [Vec.of(0, 0, 0), Vec.of(1, 0, 0), Vec.of(0, 1, 0)];
-            this.normals = [Vec.of(0, 1, 0), Vec.of(0, 0, 1), Vec.of(0, 0, 1)];
-            this.indices = [0, 1, 2];
+            this.positions = [
+                Vec.of(0, 0, 0), Vec.of(1, 0, 0), Vec.of(0, 1, 0),
+                // Vec.of(1, 1, 0)
+            ];
+            this.normals = [
+                Vec.of(0, 0, 1), Vec.of(0, 0, 1), Vec.of(0, 0, 1),
+                // Vec.of(0, 0, 1)
+            ];
+            this.indices = [0, 1, 2,
+                // 1, 2, 3
+            ];
         }
     };
 
@@ -52,10 +60,14 @@ window.Square_Outline = window.classes.Square_Outline =
             this.positions.push(
                 ...Vec.cast(
                     // TODO: List the position of draw a square
+                    [0, 0, 0], [1, 0, 0],
+                    [1, 1, 0], [0, 1, 0],
+                    [1, 0, 0], [1, 1, 0],
+                    [0, 1, 0], [0, 0, 0],
                 )
             );
 
-            this.colors = [white_c, white_c, white_c, white_c, white_c, white_c, white_c, white_c,];
+            this.colors = [white_c, white_c, white_c, white_c, white_c, white_c, white_c, white_c];
             this.indexed = false;
         }
     };
@@ -116,6 +128,7 @@ window.Demo_Scene = window.classes.Demo_Scene =
 
         draw_outline(graphics_state, model_transform) {
             // TODO: Define drawing function for outline
+            this.shapes.outline.draw(graphics_state, model_transform, this.white, "LINES");
         }
 
         display(graphics_state) {
@@ -123,16 +136,22 @@ window.Demo_Scene = window.classes.Demo_Scene =
             graphics_state.lights = this.lights;
 
             let model_transform = Mat4.identity();
-
-            this.draw_triangle(graphics_state, model_transform);
-
+            // this.draw_triangle(graphics_state, model_transform);
+            // this.draw_outline(graphics_state, model_transform);
 
             // TODO: Draw the outline
-            // this.draw_outline(graphics_state, model_transform);
+            this.draw_outline(graphics_state, model_transform);
 
             // TODO: Make a set of shapes
 
             // TODO: Make Animations
+            let translate = Mat4.translation([1, 2, 0]);
+            let rotation = Mat4.rotation(Math.PI / 4, Vec.of(0, 0, 1));
+            console.log(rotation);
+
+            model_transform = model_transform.times(rotation);
+            this.draw_triangle(graphics_state, model_transform);
+
 
             // TODO: (Practice) Use reflection, scaling, translation, and rotation together to draw a tree.
             // this.draw_triangle(graphics_state, model_transform);
