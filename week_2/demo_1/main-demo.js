@@ -63,8 +63,8 @@ window.Square_Outline = window.classes.Square_Outline =
         }
     };
 
-window.Assignment_One_Scene = window.classes.Assignment_One_Scene =
-    class Assignment_One_Scene extends Scene_Component {
+window.Demo_Scene = window.classes.Demo_Scene =
+    class Demo_Scene extends Scene_Component {
         constructor(context, control_box) {
             // The scene begins by requesting the camera, shapes, and materials it will need.
 
