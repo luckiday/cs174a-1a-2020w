@@ -190,7 +190,7 @@ window.Demo_Scene = window.classes.Demo_Scene =
             let angle = t % 1;
             R = Mat4.rotation(angle, Vec.of(0,0,1));
             for (let i = 0; i < 20; i++) {
-                model_transform = model_transform.times(T).times(S).times(R);
+                model_transform = model_transform.times(T).times(R).times(S);
                 this.draw_outline(graphics_state, model_transform);
             }
 
