@@ -135,7 +135,13 @@ window.Demo_Scene = window.classes.Demo_Scene =
             this.draw_outline(graphics_state, model_transform);
 
             // TODO: Translate
-            let T = Mat4.translation([1, 0, 0 ]);
+            let T = Mat4.translation([1, 0, 0]);
+            // let T = Mat.of(
+            //     [1, 0, 0, 0],
+            //     [0, 1, 0, 0],
+            //     [0, 0, 1, 0],
+            //     [0, 0, 0, 1],
+            // );
             // model_transform = model_transform.times(T);
 
             // TODO: Scaling
