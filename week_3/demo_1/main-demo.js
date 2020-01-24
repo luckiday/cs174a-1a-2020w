@@ -194,6 +194,5 @@ window.Demo_Scene = window.classes.Demo_Scene =
             }
 
             // TODO: (Practice) Use reflection, scaling, translation, and rotation together to draw a tree.
-            // this.draw_triangle(graphics_state, model_transform);
         }
     };
