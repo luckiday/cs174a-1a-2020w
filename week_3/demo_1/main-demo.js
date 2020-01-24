@@ -55,7 +55,6 @@ window.Square_Outline = window.classes.Square_Outline =
             // line segment.
             this.positions.push(
                 ...Vec.cast(
-                    // TODO: List the position of draw a square
                     [0, 0, 0], [1, 0, 0],
                     [1, 1, 0], [0, 1, 0],
                     [1, 0, 0], [1, 1, 0],
@@ -123,7 +122,6 @@ window.Demo_Scene = window.classes.Demo_Scene =
         }
 
         draw_outline(graphics_state, model_transform) {
-            // TODO: Define drawing function for outline
             this.shapes.outline.draw(graphics_state, model_transform, this.white, "LINES");
         }
 
@@ -133,65 +131,32 @@ window.Demo_Scene = window.classes.Demo_Scene =
 
             let model_transform = Mat4.identity();
 
-            // TODO: Draw the outline
-            // this.draw_triangle(graphics_state, model_transform);
-            // this.draw_outline(graphics_state, model_transform);
+            // Draw the outline
             this.draw_outline(graphics_state, model_transform);
 
             // TODO: Translate
-            // let T = Mat4.translation([1, 0, 0 ]);
-            let T = Mat.of(
-                [1, 0, 0, 1],
-                [0, 1, 0, 0],
-                [0, 0, 1, 0],
-                [0, 0, 0, 1],
-            );
+            let T = Mat4.translation([1, 0, 0 ]);
             // model_transform = model_transform.times(T);
 
             // TODO: Scaling
-            // let S = Mat4.scale([1, 2, 1]);
-            let S = Mat.of(
-                [1, 0, 0, 0,],
-                [0, .8, 0, 0,],
-                [0, 0, 1, 0,],
-                [0, 0, 0, 1,],
-            );
+            let S = Mat4.scale([1, 2, 1]);
             // model_transform = model_transform.times(S);
 
             // TODO: Rotate
-            //let R = Mat4.rotation(Math.PI / 4, Vec.of(0, 0, 1));
-            let angle = Math.PI / 10;
-            let R = Mat.of(
-                [Math.cos(angle), -Math.sin(angle), 0, 0],
-                [Math.sin(angle), Math.cos(angle), 0, 0],
-                [0, 0, 1, 0],
-                [0, 0, 0, 1]
-            );
+            let R = Mat4.rotation(Math.PI / 4, Vec.of(0, 0, 1));
+            // model_transform = model_transform.times(R);
 
             // TODO: Shear
-            let Shear = Mat.of(
-                [1, .5, 0, 0],
-                [0, 1, 0, 0],
-                [0, 0, 1, 0],
-                [0, 0, 0, 1],
-            );
-
             // model_transform = model_transform.times(Shear);
             // this.draw_outline(graphics_state, model_transform);
 
             // TODO: Transformations
             // Scale and Rotate a box
-            model_transform = model_transform.times(R).times(S);
+            // model_transform = model_transform.times(R).times(S);
             // this.draw_outline(graphics_state, model_transform);
 
             // TODO: Animation
             const t = this.t = graphics_state.animation_time / 1000;
-            angle = t % 4;
-            R = Mat4.rotation(angle,  Vec.of(0, 0, 1));
-            for (let i = 0; i < 10; i++) {
-                model_transform = model_transform.times(R).times(S).times(T);
-                this.draw_outline(graphics_state, model_transform);
-            }
 
             // TODO: (Practice) Use reflection, scaling, translation, and rotation together to draw a tree.
         }
