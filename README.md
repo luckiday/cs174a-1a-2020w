@@ -19,3 +19,14 @@
 - Course review (Linear Algebra)
 - Assignment 2
 - Project suggestions
+
+## Week 3
+
+- Transformations:
+  - Translation
+  - Scaling
+  - Rotation
+  - Shearing
+  
+- Transformations are NOT commutative 
+- Iteration of transformation and animation
