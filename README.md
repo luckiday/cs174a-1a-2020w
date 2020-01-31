@@ -6,8 +6,6 @@
 
 @ TA: Yunqi Guo
 
-
-
 ## Week 1
 
 - About this course,
@@ -30,3 +28,5 @@
   
 - Transformations are NOT commutative 
 - Iteration of transformation and animation
+
+
