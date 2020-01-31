@@ -7,6 +7,7 @@
 
 ## Outline
 
+
 - Change of basis
 - Model-view Transformation
 
@@ -44,8 +45,6 @@ $$
 #### Transformations as a change of basis
 
 <img src="figures/cob.png" alt="drawing" style="width:200px;"/>
-
-
 
 <u>**Question**</u>: if we apply a transformation, $M_1$, to coordinate system $C_1$, and get $C_2$, what is the new position of $P$ in $C_2$?
 
@@ -262,7 +261,6 @@ k_x'& k_y'& k_z'& -O_z'\\
 \end{bmatrix}
 P_{wcs}
 $$
-
 
 #### Quiz
 
