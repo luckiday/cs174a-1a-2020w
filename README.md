@@ -20,7 +20,7 @@
 
 ## Week 3
 
-- Transformations:
+- Basic transformations
   - Translation
   - Scaling
   - Rotation
