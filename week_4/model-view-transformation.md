@@ -104,8 +104,6 @@ M_1
 \begin{bmatrix}
 x'\\y'\\z'\\1
 \end{bmatrix}
-\label{eq:m2}
-\tag{*2}
 $$
 Since $\begin{bmatrix}
 \boldsymbol{i}&\boldsymbol{j} &\boldsymbol{k} &O
@@ -143,35 +141,22 @@ $$
 
 #### Successive transformations
 
-If we transform $C_2$ to $C_3$ with $M_2$:
-$$
-\begin{equation}
-M_2\begin{bmatrix}
+If we transform $C_2$ to $C_3$ with $M_2$. We cansider the $\begin{bmatrix}
 \boldsymbol{i}'&\boldsymbol{j}' &\boldsymbol{k}' &O'
-\end{bmatrix}
-=
-\begin{bmatrix}
-\boldsymbol{i}''&\boldsymbol{j}'' &\boldsymbol{k}'' &O''
-\end{bmatrix}
-\end{equation}
+\end{bmatrix}$ as the identity matrix in the section transforamtion, then,
 $$
-Referring to Eq. $\eqref{eq:m3}$  and Eq. $\eqref{eq:m2}$:
+P_{C_2} = M_2 P_{C_2}
 $$
-\begin{bmatrix}
-x\\y\\z\\1
-\end{bmatrix}
-=
-M_1
-\begin{bmatrix}
-x'\\y'\\z'\\1
-\end{bmatrix}
-=M_1 M_2
-\begin{bmatrix}
-x''\\y''\\z''\\1
-\end{bmatrix}\\
+Therefore, 
+
+
+$$
+P_{C_1}=M_1P_{C_2} = M_1 M_2 P_{C_3}
 $$
 
-i.e., $P_{C_1}=M_1P_{C_2} = M_1 M_2 P_{C_3}$.
+*Notice*: $\begin{bmatrix}
+\boldsymbol{i}''&\boldsymbol{j}'' &\boldsymbol{k}'' &O''
+\end{bmatrix}$ of  $C_3$ is the matrix representation in the $C_2$.
 
 ####Coordinate system transformation with rotation and transformation
 
