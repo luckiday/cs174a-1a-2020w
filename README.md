@@ -29,4 +29,7 @@
 - Transformations are NOT commutative 
 - Iteration of transformation and animation
 
+## Week 4
 
+- Change of basis
+- Model-view transformation
