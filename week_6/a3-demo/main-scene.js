@@ -17,10 +17,9 @@ window.Assignment_Three_Scene = window.classes.Assignment_Three_Scene =
                 torus2: new (Torus.prototype.make_flat_shaded_version())(15, 15),
 
                 // TODO:  Fill in shapes for sun and planet 1
-
                 sun_1: new (Subdivision_Sphere)(4),
                 sun_2: new (Subdivision_Sphere.prototype.make_flat_shaded_version())(2),
-                planet1: new (Subdivision_Sphere.prototype.make_flat_shaded_version())(2)
+                planet1: new (Subdivision_Sphere.prototype.make_flat_shaded_version())(4)
             };
             this.submit_shapes(context, shapes);
 
@@ -30,10 +29,10 @@ window.Assignment_Three_Scene = window.classes.Assignment_Three_Scene =
                     test: context.get_instance(Phong_Shader).material(Color.of(1, 1, 0, 1), {ambient: .2}),
                     // TODO:  Fill the the materials for sun and planet 1
                     sun: context.get_instance(Phong_Shader).material(Color.of(1, .5, .5, 1), {
-                        ambient: 1,
-                        // diffusivity: .7,
-                        // specular: 1,
-                        // gouraud: true,
+                        ambient: .3,
+                        diffusivity: .7,
+                        specular: 1,
+                        gouraud: true,
                     }),
                     planet1: context.get_instance(Phong_Shader).material(Color.of(.9, .9, .9, 1), {
                         ambient: .5,
@@ -44,7 +43,7 @@ window.Assignment_Three_Scene = window.classes.Assignment_Three_Scene =
                 };
 
             // TODO: Change the light position
-            this.lights = [new Light(Vec.of(0, 0, 0, 1), Color.of(1, 0, 0, 1), 1000)];
+            this.lights = [new Light(Vec.of(10, 10, 0, 1), Color.of(1, 0, 0, 1), 1000)];
 
             // TODO: Initialize attached function
             this.attached = () => this.initial_camera_location;
@@ -69,21 +68,14 @@ window.Assignment_Three_Scene = window.classes.Assignment_Three_Scene =
 
             // TODO: Draw Planet 1
             let transformation_planet = Mat4.identity();
-            transformation_planet =
-                transformation_planet.times(Mat4.rotation(2 * t, Vec.of(0, 1, 0)));
-            transformation_planet =
-                transformation_planet.times(Mat4.translation([5, 0, 0]));
-            transformation_planet =
-                transformation_planet.times(Mat4.rotation(2 * t, Vec.of(0, 1, 0)));
-
+            transformation_planet = transformation_planet.times(Mat4.translation([5, 0, 0]));
 
             this.shapes.planet1.draw(graphics_state, transformation_planet, this.materials.planet1);
-            this.shapes.torus.draw(graphics_state, transformation_planet, this.materials.planet1);
+            // this.shapes.torus.draw(graphics_state, transformation_planet, this.materials.planet1);
 
             // TODO: Change to the planet view
             this.planet_1 = transformation_planet;
             let camera_matrix = this.attached();
-            console.log(camera_matrix);
             if (camera_matrix === this.initial_camera_location){
                 graphics_state.camera_transform = Mat4.inverse(camera_matrix)
                     .map( (x,i) => Vec.from( graphics_state.camera_transform[i] ).mix( x, .1 ) );
@@ -93,7 +85,5 @@ window.Assignment_Three_Scene = window.classes.Assignment_Three_Scene =
                 graphics_state.camera_transform = camera_planet_transformation
                     .map( (x,i) => Vec.from( graphics_state.camera_transform[i] ).mix( x, .1 ) );
             }
-
-
         }
     };
