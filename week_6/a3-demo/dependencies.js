@@ -553,7 +553,7 @@ window.Torus = window.classes.Torus =
         constructor(rows, columns) {
             super("positions", "normals", "texture_coords");
             const circle_points = Array(rows).fill(Vec.of(.75, 0, 0))
-                .map((p, i, a) => Mat4.translation([-2, 0, 0])
+                .map((p, i, a) => Mat4.translation([-10, 0, 0])
                     .times(Mat4.rotation(i / (a.length - 1) * 2 * Math.PI, Vec.of(0, -1, 0)))
                     .times(p.to4(1)).to3());
 
