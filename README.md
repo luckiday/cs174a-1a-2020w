@@ -33,3 +33,16 @@
 
 - Change of basis
 - Model-view transformation
+
+## Week 5
+- Midterm review
+
+## Week 6
+
+- Assignment 3
+- Group project - Design and Tools
+
+## Week 7
+
+- Midterm Solutions
+- Tiny graphics examples

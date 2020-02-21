@@ -104,13 +104,14 @@ export class Shape_From_File extends Shape {
     }
 }
 
-export class Obj_File_Demo extends Scene {                           // **Obj_File_Demo** show how to load a single 3D model from an OBJ file.
-                                                                     // Detailed model files can be used in place of simpler primitive-based
-                                                                     // shapes to add complexity to a scene.  Simpler primitives in your scene
-                                                                     // can just be thought of as placeholders until you find a model file
-                                                                     // that fits well.  This demo shows the newspaper model twice, with one
-                                                                     // newspaper showing off the Fake_Bump_Map effect while the other has a
-                                                                     // regular texture and Phong lighting.
+export class Obj_File_Demo extends Scene {
+    // **Obj_File_Demo** show how to load a single 3D model from an OBJ file.
+    // Detailed model files can be used in place of simpler primitive-based
+    // shapes to add complexity to a scene.  Simpler primitives in your scene
+    // can just be thought of as placeholders until you find a model file
+    // that fits well.  This demo shows the newspaper model twice, with one
+    // newspaper showing off the Fake_Bump_Map effect while the other has a
+    // regular texture and Phong lighting.
     constructor() {
         super();
         // Load the model file:
@@ -121,12 +122,12 @@ export class Obj_File_Demo extends Scene {                           // **Obj_Fi
         // Non bump mapped:
         this.stars = new Material(new defs.Textured_Phong(1), {
             color: color(0, 0, 0, 1),
-            ambient: 1, diffusivity: 1, specularity: 0.5, texture: new Texture("assets/newspaper.png")
+            ambient: 1, diffusivity: 1, specularity: 0.1, texture: new Texture("assets/newspaper.png")
         });
         // Bump mapped:
         this.bumps = new Material(new defs.Fake_Bump_Map(1), {
             color: color(0, 0, 0, 1),
-            ambient: 1, diffusivity: 1, specularity: 0.5, texture: new Texture("assets/newspaper.png")
+            ambient: 1, diffusivity: 1, specularity: 0.1, texture: new Texture("assets/newspaper.png")
         });
     }
 
@@ -140,18 +141,18 @@ export class Obj_File_Demo extends Scene {                           // **Obj_Fi
             Mat4.rotation(t / 300, 1, 0, 0).times(vec4(3, 2, 10, 1)),
             color(1, .7, .7, 1), 100000)];
 
-        for (let i of [-1, 1]) {                                       // Spin the 3D model shapes as well.
+        for (let i of [0, 1]) {                                       // Spin the 3D model shapes as well.
             const model_transform = Mat4.rotation(t / 2000, 0, 2, 1)
                 .times(Mat4.translation(2 * i, 0, 0))
                 .times(Mat4.rotation(t / 1500, -1, 2, 0))
                 .times(Mat4.rotation(-Math.PI / 2, 1, 0, 0));
-            this.shapes.newspaper.draw(context, program_state, model_transform, i == 1 ? this.stars : this.bumps);
+            this.shapes.newspaper.draw(context, program_state, model_transform, i === 1 ? this.stars : this.bumps);
         }
     }
 
     show_explanation(document_element) {
-        document_element.innerHTML += "<p>This demo loads an external 3D model file of a newspaper.  It uses a condensed version of the \"webgl-obj-loader.js\" "
-            + "open source library, though this version is not guaranteed to be complete and may not handle some .OBJ files.  It is contained in the class \"Shape_From_File\". "
-            + "</p><p>One of these newspapers is lit with bump mapping.  Can you tell which one?</p>";
+        document_element.innerHTML +=
+            "<p>This demo loads an external 3D model file of a newspaper.  It uses a condensed version of the \"webgl-obj-loader.js\" "
+            + "open source library, though this version is not guaranteed to be complete and may not handle some .OBJ files.  It is contained in the class \"Shape_From_File\". ";
     }
 }
