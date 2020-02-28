@@ -25,7 +25,7 @@ window.Assignment_Four_Scene = window.classes.Assignment_Four_Scene =
                 box_1: new Cube(),
                 axis: new Axis_Arrows(),
             };
-            shapes.box_1.texture_coords = shapes.box_1.texture_coords.map(v => Vec.of(v[0] , v[1]));
+            shapes.box_1.texture_coords = shapes.box_1.texture_coords.map(v => Vec.of(v[0] * 2, v[1] * 2));
 
             this.submit_shapes(context, shapes);
 
@@ -35,6 +35,12 @@ window.Assignment_Four_Scene = window.classes.Assignment_Four_Scene =
             this.materials =
                 {
                     phong: context.get_instance(Phong_Shader).material(Color.of(1, 1, 0, 1)),
+                    box_1: context.get_instance(Texture_Rotate).material(
+                        Color.of(0, 0, 0, 1), {
+                            ambient: 1,
+                            texture: context.get_instance("assets/demo_2.png")
+                        }
+                    ),
                 };
 
             this.lights = [new Light(Vec.of(-5, 5, 5, 1), Color.of(0, 1, 1, 1), 100000)];
@@ -52,15 +58,14 @@ window.Assignment_Four_Scene = window.classes.Assignment_Four_Scene =
             const t = graphics_state.animation_time / 1000, dt = graphics_state.animation_delta_time / 1000;
 
             // TODO:  Draw the required boxes. Also update their stored matrices.
-            this.shapes.axis.draw(graphics_state, Mat4.identity(), this.materials.phong);
-            // this.shapes.box_1.draw(graphics_state, Mat4.identity(), this.materials.phong);
+            // this.shapes.axis.draw(graphics_state, Mat4.identity(), this.materials.phong);
+            this.shapes.box_1.draw(graphics_state, Mat4.identity(), this.materials.box_1);
         }
     };
 
 
 class Texture_Rotate extends Phong_Shader {
-    fragment_glsl_code()
-    {
+    fragment_glsl_code() {
         // ********* FRAGMENT SHADER *********
         // TODO:  Modify the shader below (right now it's just the same fragment shader as Phong_Shader) for requirement #7.
         return `
@@ -78,10 +83,13 @@ class Texture_Rotate extends Phong_Shader {
           // Sample the texture image in the correct place.
           // Compute an initial (ambient) color:
           
-          vec4 tex_color = texture2D( texture, f_tex_coord );        
+          // vec4 tex_color = texture2D( texture, f_tex_coord );        
                     
           /* 2D rotation matrix */
-          // float theta = animation_time;
+          float theta = animation_time;
+          mat2 r = mat2(cos(theta), sin(theta), -sin(theta), cos(theta));
+          float t = 0.5;
+          vec4 tex_color = texture2D(texture, r * (f_tex_coord.xy - t) + t);
 
           if( USE_TEXTURE ) 
             gl_FragColor = vec4( ( tex_color.xyz + shapeColor.xyz ) * ambient, 
