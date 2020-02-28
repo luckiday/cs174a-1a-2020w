@@ -1,31 +1,5 @@
 # Assignment #4
 
-## Due: November 24, 2019 at 11:50pm
-
-### Repository setup:
-
-1. By now you have followed the link to create your assignment repository. You can find the link under Piazza resources. Please use the link once as it will create an repository we will not check for submissions if you use it multiple times. The repository name should look like **a4-githubusername**. Any others will get removed.
-
-2. You should also be sure to share your GitHub username with us via this link if you have not already. https://forms.gle/Yne8PYVbfGp2vj6j9
-
-   * You should also be sure to setup your local git environment and ssh keys to work with GitHub.
-
-3. Once your repository is created you will have a copy of the assignment template in your github repository. Now you can clone the repository onto your local computer using the following command. Be sure do execute this command from the directory you wish to locate your work.
-
-    ```bash
-      $ git clone git@github.com:https://github.com/intro-graphics-master-F19/a4-gitusername.git
-
-      ```
-
-4. You can now follow the remaining steps of the assignment.
-
-### Graded Steps
-
-#### Up to 50 points of credit plus 15 points extra credit. There is no partial credit on any individual requirement. Late assignments are penalized 25% per day (no exceptions).
-
-Implement the assignment in clean and understandable code. Each required part must successfully draw and show up onscreen in order to count. If you use code that you found online you must cite it inside your program file otherwise that is plagiarism.
-
-**If any parts are unclear, ask on Piazza.**
 
 #### Point distribution
 
@@ -85,27 +59,3 @@ Implement the assignment in clean and understandable code. Each required part mu
    https://webglfundamentals.org/webgl/lessons/webgl-2-textures.html
 
    You will probably need new WebGL commands from that tutorial that don't appear in the library, such as `gl.activeTexture()` and `gl.uniform1i()`.  Presently, the default value of zero for a uniform seems to be how our default `Sampler2D` for texturing is selected.
-
-### Submitting Assignment 4 on GitHub:
-
-1. Once you are finished working it is time to 'commit' your work to your remote repository on GitHub. You will also want to do this periodically while you are working to make a backup of your work and to make your final submission. We will keep the process very simple by just 'committing' the master branch of your local repository into the remote repository on GitHub.
-
-2. The first step is to add any new files into the repository so they can be tracked.
-
-    ```bash
-      $ git add *
-      ```
-
-3. Then we commit any new and or changed files to the repository. The text after the -m is for you to describe what is included in this commit to the repository.
-
-    ```bash
-      $ git commit -m "Description of what I did"
-      ```
-
-4. Finally, we need to push these changes up to our remote repository on GitHub. This is a very important step! Without it you are not copying your work back to GitHub and we will not be able to see it if you forget.
-
-    ```bash
-      $ git push origin master
-      ```
-
-5. You can repeat these commands as often as you feel the need as your work on your assignment. However, again, you must always make a final push to GitHub when you are finished in order to submit your work. We will make a clone of all of the assignment repositories at the deadline. That implies two things. First, make your final push to GitHub ahead of time and second, any pushes you make after the deadline will not be seen by us.
